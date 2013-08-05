@@ -1,0 +1,2 @@
+mysqldb-python
+django-social-auth
