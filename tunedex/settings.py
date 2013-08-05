@@ -1,4 +1,7 @@
-# Django settings for tunedex project.
+import os
+
+
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -108,9 +111,7 @@ ROOT_URLCONF = 'tunedex.urls'
 WSGI_APPLICATION = 'tunedex.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_PATH + '/templates/'
 )
 
 INSTALLED_APPS = (
@@ -171,8 +172,8 @@ AUTHENTICATION_BACKENDS = (
 # social-auth keys, via http://django-social-auth.readthedocs.org/en/latest/configuration.html
 TWITTER_CONSUMER_KEY         = 'msoU8UJJv5U48KzlvgXoPw'
 TWITTER_CONSUMER_SECRET      = 'v4v1PDfdVuXAR8ncKbCnXhqWwzNfJpN2acgTZ8hm8Y'
-FACEBOOK_APP_ID              = ''
-FACEBOOK_API_SECRET          = ''
+FACEBOOK_APP_ID              = '496984660387748'
+FACEBOOK_API_SECRET          = '1924dfc1134aaad61b8df6795013e62c'
 GOOGLE_CONSUMER_KEY          = ''
 GOOGLE_CONSUMER_SECRET       = ''
 GOOGLE_OAUTH2_CLIENT_ID      = ''
