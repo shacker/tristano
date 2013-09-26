@@ -95,6 +95,11 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+ )
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -126,7 +131,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
-    'social_auth'
+    'social.apps.django_app.default',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -158,26 +163,23 @@ LOGGING = {
     }
 }
 
-# social-auth, via http://django-social-auth.readthedocs.org/en/latest/configuration.html
+# social-auth User model - should default to Django
+# SOCIAL_AUTH_USER_MODEL = 'foo.bar.User'
+
+# social-auth, via http://psa.matiasaguirre.net/docs/configuration/django.html
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    'social_auth.backends.facebook.FacebookBackend',
-    'social_auth.backends.google.GoogleOAuthBackend',
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.google.GoogleBackend',
-    'social_auth.backends.contrib.github.GithubBackend',
-    'django.contrib.auth.backends.ModelBackend',
+    'social.backends.twitter.TwitterOAuth',
 )
 
 # social-auth keys, via http://django-social-auth.readthedocs.org/en/latest/configuration.html
-TWITTER_CONSUMER_KEY         = 'msoU8UJJv5U48KzlvgXoPw'
-TWITTER_CONSUMER_SECRET      = 'v4v1PDfdVuXAR8ncKbCnXhqWwzNfJpN2acgTZ8hm8Y'
-FACEBOOK_APP_ID              = '496984660387748'
-FACEBOOK_API_SECRET          = '1924dfc1134aaad61b8df6795013e62c'
-GOOGLE_CONSUMER_KEY          = ''
-GOOGLE_CONSUMER_SECRET       = ''
-GOOGLE_OAUTH2_CLIENT_ID      = ''
-GOOGLE_OAUTH2_CLIENT_SECRET  = ''
+SOCIAL_AUTH_TWITTER_KEY = 'msoU8UJJv5U48KzlvgXoPw'
+SOCIAL_AUTH_TWITTER_SECRET = 'v4v1PDfdVuXAR8ncKbCnXhqWwzNfJpN2acgTZ8hm8Y'
+# FACEBOOK_APP_ID              = '496984660387748'
+# FACEBOOK_API_SECRET          = '1924dfc1134aaad61b8df6795013e62c'
+# GOOGLE_CONSUMER_KEY          = ''
+# GOOGLE_CONSUMER_SECRET       = ''
+# GOOGLE_OAUTH2_CLIENT_ID      = ''
+# GOOGLE_OAUTH2_CLIENT_SECRET  = ''
 
 
 #####################################################################
