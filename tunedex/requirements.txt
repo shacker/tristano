@@ -1,2 +1,3 @@
 mysqldb-python
 python-social-auth
+django-extensions
