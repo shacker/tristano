@@ -167,9 +167,11 @@ LOGGING = {
 
 # social-auth User model - should default to Django
 # SOCIAL_AUTH_USER_MODEL = 'foo.bar.User'
+# SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.User'
 
 # social-auth, via http://psa.matiasaguirre.net/docs/configuration/django.html
 AUTHENTICATION_BACKENDS = (
+    'social.apps.django_app.utils.BackendWrapper',
     'social.backends.twitter.TwitterOAuth',
 )
 

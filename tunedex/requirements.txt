@@ -1,3 +1,7 @@
-mysqldb-python
-python-social-auth
+# Versioned
+django==1.6
+python-social-auth==0.1.16
+
+# Unversioned
 django-extensions
+mysqldb-python
