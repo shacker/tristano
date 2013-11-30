@@ -12,10 +12,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'tunedex',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -27,6 +28,8 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
+
+LOGIN_REDIRECT_URL = '/'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -97,8 +100,9 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
+    'django.core.context_processors.request',
+    'allauth.account.context_processors.account',
+    'allauth.socialaccount.context_processors.socialaccount',
  )
 
 MIDDLEWARE_CLASSES = (
@@ -109,6 +113,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 ROOT_URLCONF = 'tunedex.urls'
@@ -127,14 +139,31 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 
-    'social.apps.django_app.default',
     'django_extensions',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.twitter',
 )
+
+# DJANGO-ALLAUTH OPTIONS
+# http://django-allauth.readthedocs.org/en/latest/#configuration
+SOCIALACCOUNT_PROVIDERS =  {
+    'facebook':
+        { 'SCOPE': ['email',],
+          'METHOD': 'oauth2'
+        },
+
+    'google':
+        {   'SCOPE': ['https://www.googleapis.com/auth/userinfo.profile'],
+            'AUTH_PARAMS': { 'access_type': 'online' }
+        },
+    'twitter': {},
+
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -165,25 +194,6 @@ LOGGING = {
     }
 }
 
-# social-auth User model - should default to Django
-# SOCIAL_AUTH_USER_MODEL = 'foo.bar.User'
-# SOCIAL_AUTH_USER_MODEL = 'django.contrib.auth.User'
-
-# social-auth, via http://psa.matiasaguirre.net/docs/configuration/django.html
-AUTHENTICATION_BACKENDS = (
-    'social.apps.django_app.utils.BackendWrapper',
-    'social.backends.twitter.TwitterOAuth',
-)
-
-# social-auth keys, via http://django-social-auth.readthedocs.org/en/latest/configuration.html
-SOCIAL_AUTH_TWITTER_KEY = 'msoU8UJJv5U48KzlvgXoPw'
-SOCIAL_AUTH_TWITTER_SECRET = 'v4v1PDfdVuXAR8ncKbCnXhqWwzNfJpN2acgTZ8hm8Y'
-# FACEBOOK_APP_ID              = '496984660387748'
-# FACEBOOK_API_SECRET          = '1924dfc1134aaad61b8df6795013e62c'
-# GOOGLE_CONSUMER_KEY          = ''
-# GOOGLE_CONSUMER_SECRET       = ''
-# GOOGLE_OAUTH2_CLIENT_ID      = ''
-# GOOGLE_OAUTH2_CLIENT_SECRET  = ''
 
 
 #####################################################################

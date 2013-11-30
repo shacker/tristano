@@ -1,7 +1,6 @@
 # Versioned
 django==1.6
-python-social-auth==0.1.16
+django-allauth==0.14.2
 
 # Unversioned
 django-extensions
-mysqldb-python
