@@ -142,6 +142,9 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
+
+    # Our apps
+    'profiles',
 )
 
 # DJANGO-ALLAUTH OPTIONS

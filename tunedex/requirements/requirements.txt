@@ -4,3 +4,4 @@ django-allauth==0.14.2
 
 # Unversioned
 django-extensions
+Pillow

@@ -24,6 +24,20 @@
     </style>
   </head>
   <body>
+  	<div class="row">
+  		<div class="large-12 columns">
+		  	{% if user.is_authenticated %}
+		  		<p>
+		  			{{user.username}} | <a href="{% url 'account_logout' %}">Log out</a>
+		  		</p>
+		  	{% else %}
+			  	<p>
+			  		<a href="{% url 'account_signup' %}">Sign up</a> | <a href="{% url 'account_login' %}">Login</a>
+			  	</p>
+		  	{% endif %}
+  		</div>
+  </div>
+
     
     <div class="row">
       <div class="large-12 columns">
