@@ -1,0 +1,37 @@
+{% load static from staticfiles %}
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" >
+  <head>
+    <meta name="viewport" content="initial-scale=1.0" />
+
+    <title>Foundation | Welcome</title>
+    <link href="{% static 'bower_components/foundation/css/foundation.css' %}" rel='stylesheet' />
+    <script src="{% static 'bower_components/foundation/js/vendor/custom.modernizr.js' %}"></script>
+
+  </head>
+  <body>
+  	<div class="row">
+  		<div class="large-12 columns">
+        <p>
+          <a href="/">Home</a> | 
+  		  	{% if user.is_authenticated %}
+  		  			<a href="{% url 'profile_display' user %}">{{user.username}}</a> | <a href="{% url 'account_logout' %}">Log out</a>
+  		  	{% else %}
+  			  		<a href="{% url 'account_signup' %}">Sign up</a> | <a href="{% url 'account_login' %}">Login</a>
+  		  	{% endif %}
+        </p>
+  		</div>
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'bower_components/foundation/js/vendor/jquery.js' %}"></script>
+    <script>
+      $.getScript("{% static 'bower_components/foundation/js/foundation.js' %}", function(){
+        $(document).foundation();
+      });
+    </script>
+  </body>
+</html>

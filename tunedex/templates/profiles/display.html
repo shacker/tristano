@@ -1,7 +1,19 @@
-{{profile}} profile
+{% extends "base.html" %}
 
-<p>Bio: {{profile.bio}}</p>
+<div class="row">
+{% block content %}
 
-<p>Influences: {{profile.bio}}</p>
+	<div class="row">
+		<div class="large-12 columns">
+			<h2 class="subheader">{{profile}}'s Profile page</h2>
 
-<p>Avatar: {{profile.avatar}}</p>
+			<p>Bio: {{profile.bio}}</p>
+
+			<p>Influences: {{profile.bio}}</p>
+
+			<p>Avatar: {{profile.avatar}}</p>
+		</div>
+	</div>
+
+{% endblock content %}
+</div>
