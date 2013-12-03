@@ -28,7 +28,7 @@
   		<div class="large-12 columns">
 		  	{% if user.is_authenticated %}
 		  		<p>
-		  			{{user.username}} | <a href="{% url 'account_logout' %}">Log out</a>
+		  			<a href="{% url 'profile_display' user %}">{{user.username}}</a> | <a href="{% url 'account_logout' %}">Log out</a>
 		  		</p>
 		  	{% else %}
 			  	<p>
