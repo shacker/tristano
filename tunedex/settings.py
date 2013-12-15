@@ -124,7 +124,8 @@ ROOT_URLCONF = 'tunedex.urls'
 WSGI_APPLICATION = 'tunedex.wsgi.application'
 
 TEMPLATE_DIRS = (
-    PROJECT_PATH + '/templates/'
+    PROJECT_PATH + '/templates/allauth',    
+    PROJECT_PATH + '/templates/',
 )
 
 INSTALLED_APPS = (
@@ -142,6 +143,7 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
+    'south',
 
     # Our apps
     'profiles',
