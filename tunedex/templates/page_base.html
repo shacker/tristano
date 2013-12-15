@@ -14,14 +14,16 @@
   </head>
   <body>
 
+
     {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
+    <div class="row">
+      <div class="large-12 columns">
+        <ul>
+          {% for message in messages %}
+          <li>{{message}}</li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
     {% endif %}
 
