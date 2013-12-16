@@ -1,0 +1,24 @@
+ul.messages {
+  li {
+    list-style: none;
+    margin-left: -25px;
+    padding: 10px;
+
+    .success {
+      background: #bff2f3;
+    }
+
+    .error {
+      background: #c51324;
+    }
+
+    .info {
+      background: #e4f388;
+    }
+
+    .warning {
+      background: #63d5f3;
+    }
+
+  }
+}
