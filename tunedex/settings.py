@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL = '/'
 
+APPEND_SLASH = True
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -120,6 +122,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ROOT_URLCONF = 'tunedex.urls'
+
+# AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'tunedex.wsgi.application'

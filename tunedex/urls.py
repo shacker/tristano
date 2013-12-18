@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from profiles.views import profile_display
+from profiles.views import profile_display, profile_edit
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('allauth.urls')),
 
     # User pages
+    url(r'^p/edit/?$', profile_edit, name='profile_edit'),
     url(r'^p/(?P<username>\w+)/$', profile_display, name='profile_display'),
 
     url(r'^$', 'main.views.home', name='home'),
