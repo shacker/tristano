@@ -38,11 +38,12 @@ class Profile(models.Model):
 
     def __unicode__(self):
         if self.user.first_name and self.user.last_name:
-            return u'%s %s' % (self.user.first_name, self.user.last_name)
-        elif self.user.first_name:
-            return u'%s' % (self.user.first_name)
+            display_string = "{first} {last} ({uname})".format(first=self.user.first_name, last=self.user.last_name, uname=self.user.username)
+        elif self.user.first_name and not self.user.last_name:
+            display_string = "{first} ({uname})".format(first=self.user.first_name, uname=self.user.username)
         else:
-            return self.user.username
+            display_string = "{uname}".format(uname=self.user.username)
+        return display_string
 
 
 # When account is created via social, fire django-allauth signal to populate Django User record.
@@ -88,5 +89,5 @@ def user_logged_in_(request, user, sociallogin=None, **kwargs):
     For new users, create profile first!
     '''
 
-    p, created = Profile.objects.get_or_create(user=user)
+    p, created = Profile.objects.get_or_create(user=user)   # 'created' will be true or false
     p.set_social_avatar_url(p)
