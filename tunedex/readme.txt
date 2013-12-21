@@ -27,9 +27,9 @@ Thus, generated `styles/css/app.css` includes all of foundations plus our overri
 To compile, use:
   alias tunes='compass compile --sass-dir tunedex/static/styles/sass --css-dir tunedex/static/styles/css'
 
-In dev mode, we serve directly out of `static`. 
+In dev mode, we serve directly out of `static`.
 
-In production, `collectstatic` copies all of this plus media included with installed apps over to `static_apps`, which is where everything gets served from. 
+In production, `collectstatic` copies all of this plus media included with installed apps over to `static_apps`, which is where everything gets served from.
 
 =====================
 
