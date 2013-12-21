@@ -170,6 +170,20 @@ SOCIALACCOUNT_PROVIDERS =  {
 
 }
 
+# This callable sets the profile display_name, which in turn supports the allauth template tag: {% user_display user %}
+# ACCOUNT_USER_DISPLAY = "cir.profiles.models.get_or_set_display_name"
+ACCOUNT_AUTHENTICATION_METHOD = ("email")
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+# ACCOUNT_SIGNUP_FORM_CLASS = 'profiles.forms.RegistrationForm'  # Use this to add additional fields on signup
+# ACCOUNT_PASSWORD_MIN_LENGTH = 8  # Not needed with social logins only
+# Attempt to bypass the signup form by using fields (e.g. username, email) retrieved from the social account provider.
+# Works for Twitter and FB, not for Google.
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
