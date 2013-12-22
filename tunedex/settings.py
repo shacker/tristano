@@ -123,13 +123,12 @@ AUTHENTICATION_BACKENDS = (
 
 ROOT_URLCONF = 'tunedex.urls'
 
-# AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'tunedex.wsgi.application'
 
 TEMPLATE_DIRS = (
-    PROJECT_PATH + '/templates/allauth',    
+    PROJECT_PATH + '/templates/allauth',
     PROJECT_PATH + '/templates/',
 )
 
@@ -143,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'django_extensions',
+    'markdown_deux',
 
     'allauth',
     'allauth.account',

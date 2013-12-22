@@ -6,3 +6,4 @@ django-allauth==0.15.0
 django-extensions
 Pillow
 south
+django-markdown-deux

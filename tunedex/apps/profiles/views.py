@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.utils.html import strip_tags
+
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
@@ -34,12 +36,15 @@ def profile_edit(request):
         return redirect('account_login')
 
     if request.method == 'POST':
-        print "posting"
         form = ProfileForm(instance=profile, data=request.POST)
-        print form
         if form.is_valid():
-            print "valid"
-            form.save()
+
+            # Strip out all HTML; we allow markdown only
+            uprofile = form.save(commit=False)
+            uprofile.bio = strip_tags(form.cleaned_data['bio'])
+            uprofile.influences = strip_tags(form.cleaned_data['influences'])
+            uprofile.save()
+
             messages.add_message (request, messages.SUCCESS, 'Profile saved!')
             url = reverse('profile_display', kwargs={'username': request.user.username})
             return HttpResponseRedirect(url)

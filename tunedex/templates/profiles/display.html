@@ -1,4 +1,5 @@
 {% extends "page_base.html" %}
+{% load markdown_deux_tags %}
 
 {% block page_title %}{{ block.super }}{{profile.display_name}}'s Profile{% endblock page_title %}
 
@@ -7,13 +8,16 @@
 
 	<div class="row">
 		<div class="large-12 columns">
-			<h2 class="subheader">{{profile.display_name}}'s Profile page</h2>
+			<h2 class="subheader">{{profile.display_name}}'s Profile</h2>
 
-			<p>Bio: {{profile.bio}}</p>
+			<p><img src="{{profile.social_avatar_url}}" /></p>
 
-			<p>Influences: {{profile.influences}}</p>
+			<h3>Bio:</h3>
+			{{profile.bio|markdown}}
 
-			<p>Avatar: <img src="{{profile.social_avatar_url}}" /></p>
+			<h3>Influences:</h3>
+			{{profile.influences|markdown}}
+
 		</div>
 	</div>
 

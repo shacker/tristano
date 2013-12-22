@@ -9,6 +9,8 @@
 		<div class="large-12 columns">
 			<h2 class="subheader">Editing {{profile.display_name}}'s Profile</h2>
 
+			<p><strong>Formatting:</strong> HTML/Javascript will be removed. Please feel free to format your text with <a href="http://blog.lib.umn.edu/crosb002/leadership/Markdown_Cheat_Sheet.pdf" target="_blank">markdown</a>.</p>
+
 			<form action="{% url 'profile_edit' %}" method="post">
 			{% csrf_token %}
 
