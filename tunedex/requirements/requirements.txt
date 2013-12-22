@@ -7,3 +7,4 @@ django-extensions
 Pillow
 south
 django-markdown-deux
+django_compressor

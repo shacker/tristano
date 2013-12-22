@@ -83,7 +83,22 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
+
+
+# For django-compressor. True in production only; override in local settings
+# Available settings at http://django-compressor.readthedocs.org/en/latest/settings/#settings
+# Use `./manage.py compress` to see how production compiles collected assets
+COMPRESS_OFFLINE = True  # Override locally
+COMPRESS_ENABLED = True
+COMPRESS_DATA_URI_MAX_SIZE = 2048
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.datauri.CssDataUriFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '99a(0)wfw(&k3_1a-e*f#ycjnf!*)2w^i*xr!b)4b&re+)yx1l'
@@ -133,6 +148,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    # Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -141,14 +157,16 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    # 3rd party apps
     'django_extensions',
     'markdown_deux',
+    'compressor',
+    'south',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.twitter',
-    'south',
 
     # Our apps
     'profiles',
