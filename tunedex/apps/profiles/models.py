@@ -39,20 +39,26 @@ class Profile(models.Model):
             self.social_avatar_url = imgurl
             self.save()
 
-    def __unicode__(self):
+
+    def display_name(self):
+        # Separate from __unicode__ for use on public site
         if self.user.first_name and self.user.last_name:
-            display_string = "{first} {last} ({uname})".format(
+            display_string = "{first} {last}".format(
                 first=self.user.first_name,
-                last=self.user.last_name,
-                uname=self.user.username)
+                last=self.user.last_name)
         elif self.user.first_name and not self.user.last_name:
-            display_string = "{first} ({uname})".format(
-                first=self.user.first_name,
-                uname=self.user.username)
+            display_string = "{first}".format(
+                first=self.user.first_name)
         else:
             display_string = "{uname}".format(
                 uname=self.user.username)
 
+        return display_string
+
+
+    def __unicode__(self):
+
+        display_string = "{display} ({uname})".format(display=self.display_name(), uname=self.user.username)
         return display_string
 
 

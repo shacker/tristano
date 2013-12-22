@@ -1,13 +1,13 @@
 {% extends "page_base.html" %}
 
-{% block page_title %}{{ block.super }}{{profile}}'s Profile{% endblock page_title %}
+{% block page_title %}{{ block.super }}{{profile.display_name}}'s Profile{% endblock page_title %}
 
 <div class="row">
 {% block content %}
 
 	<div class="row">
 		<div class="large-12 columns">
-			<h2 class="subheader">{{profile}}'s Profile page</h2>
+			<h2 class="subheader">{{profile.display_name}}'s Profile page</h2>
 
 			<p>Bio: {{profile.bio}}</p>
 
