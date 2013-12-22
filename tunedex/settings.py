@@ -170,6 +170,7 @@ INSTALLED_APPS = (
 
     # Our apps
     'profiles',
+    'sampledata',
 )
 
 # DJANGO-ALLAUTH OPTIONS
