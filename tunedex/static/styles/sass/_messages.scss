@@ -1,22 +1,23 @@
 ul.messages {
   li {
+
     list-style: none;
     margin-left: -25px;
     padding: 10px;
 
-    .success {
+    &.success {
       background: #bff2f3;
     }
 
-    .error {
+    &.error {
       background: #c51324;
     }
 
-    .info {
+    &.info {
       background: #e4f388;
     }
 
-    .warning {
+    &.warning {
       background: #63d5f3;
     }
 
