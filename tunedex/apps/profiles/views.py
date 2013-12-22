@@ -1,7 +1,11 @@
-from django.http import HttpResponse
-from profiles.models import Profile
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+
+from profiles.models import Profile
+from profiles.forms import ProfileForm
 
 
 def profile_display(request, username=None):
@@ -25,11 +29,25 @@ def profile_edit(request):
 
     try:
         profile = Profile.objects.get(user__username__iexact=request.user.username)
-        return render(
-            request,
-            "profiles/edit.html",
-            locals()
-        )
-
+        form = ProfileForm(instance=profile)
     except:
         return redirect('account_login')
+
+    if request.method == 'POST':
+        print "posting"
+        form = ProfileForm(instance=profile, data=request.POST)
+        print form
+        if form.is_valid():
+            print "valid"
+            form.save()
+            messages.add_message (request, messages.SUCCESS, 'Profile saved!')
+            url = reverse('profile_display', kwargs={'username': request.user.username})
+            return HttpResponseRedirect(url)
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(
+        request,
+        "profiles/edit.html",
+        locals()
+    )

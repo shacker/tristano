@@ -14,6 +14,9 @@ class Profile(models.Model):
         Run this every time someone logs in with social so that remote avatar changes are reflected here.
 
         Normal login avatars use either uploaded image or via gravatar, but that's handled in pic_or_gravatar template tag.
+
+        For sites that don't display long lists of user profiles with icons, could probably do without this function and just
+        grab it directly from the social_account.extra_data directly.
         '''
 
         # Is this a social account?
@@ -38,11 +41,18 @@ class Profile(models.Model):
 
     def __unicode__(self):
         if self.user.first_name and self.user.last_name:
-            display_string = "{first} {last} ({uname})".format(first=self.user.first_name, last=self.user.last_name, uname=self.user.username)
+            display_string = "{first} {last} ({uname})".format(
+                first=self.user.first_name,
+                last=self.user.last_name,
+                uname=self.user.username)
         elif self.user.first_name and not self.user.last_name:
-            display_string = "{first} ({uname})".format(first=self.user.first_name, uname=self.user.username)
+            display_string = "{first} ({uname})".format(
+                first=self.user.first_name,
+                uname=self.user.username)
         else:
-            display_string = "{uname}".format(uname=self.user.username)
+            display_string = "{uname}".format(
+                uname=self.user.username)
+
         return display_string
 
 
