@@ -11,6 +11,6 @@ form {
 	textarea {
 		height: rem-calc(140);
 		font-size: rem-calc(20);
-		color: #626262;
+		color: $textarea-color;
 	}
 }

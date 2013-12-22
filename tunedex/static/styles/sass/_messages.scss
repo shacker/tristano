@@ -3,22 +3,22 @@ ul.messages {
 
     list-style: none;
     margin-left: rem-calc(-40);
-    padding: 10px;
+    padding: rem-calc(20);
 
     &.success {
-      background: #bff2f3;
+      background: $success-color;
     }
 
     &.error {
-      background: #c51324;
+      background: $error-color;
     }
 
     &.info {
-      background: #e4f388;
+      background: $info-color;
     }
 
     &.warning {
-      background: #63d5f3;
+      background: $warning-color;
     }
 
   }
