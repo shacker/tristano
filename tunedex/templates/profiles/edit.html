@@ -12,11 +12,11 @@
 			<form action="{% url 'profile_edit' %}" method="post">
 			{% csrf_token %}
 
-			{{form.bio.label}}
+			<label>{{form.bio.label}}</label>
 			{{form.bio}}
 			<p class="helptext">{{form.bio.help_text}}</p>
 
-			{{form.influences.label}}
+			<label>{{form.influences.label}}</label>
 			{{form.influences}}
 			<p class="helptext">{{form.influences.help_text}}</p>
 

@@ -2,7 +2,7 @@ ul.messages {
   li {
 
     list-style: none;
-    margin-left: -25px;
+    margin-left: rem-calc(-40);
     padding: 10px;
 
     &.success {

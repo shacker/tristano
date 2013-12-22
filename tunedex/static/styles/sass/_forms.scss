@@ -1,14 +1,16 @@
 form {
 	label {
-		font-size: 20px;
+		font-size: rem-calc(20);
 	}
 
 	p.helptext {
-		margin-top: -10px;
-		font-size: 16px;
+		margin-top: rem-calc(-15);
+		font-size: rem-calc(15);
 	}
 
 	textarea {
-		height: 100px;
+		height: rem-calc(140);
+		font-size: rem-calc(20);
+		color: #626262;
 	}
 }
