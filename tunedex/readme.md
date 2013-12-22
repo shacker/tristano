@@ -51,6 +51,10 @@ Test django-compressor's minification by setting
 
 in local_settings.py and then viewing source.
 
+# API
+
+A simple API is demonstrated via `django-rest-framework` via the `sampledata` app. Enter a few books, then access `/api/books` for the demo. Append `?format=json` to any REST URL for raw data.
+
 # Versions
 
 v 1.0: Initial release
