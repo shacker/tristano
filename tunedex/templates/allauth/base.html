@@ -1,1 +1,5 @@
 {% extends "page_base.html" %}
+
+{% block page_title %}
+	{{ block.super }} {% block head_title %}{% endblock %}
+{% endblock page_title %}
