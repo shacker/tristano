@@ -1,6 +1,6 @@
 # About
 
-Capsicum is a generic, ready-to-extend, responsive Django + Angular site based on:
+Tristano is a generic, ready-to-extend, responsive Django + Angular site based on:
 
 - Zurb Foundation (CSS grid and UI widgets)
 - AngularJS
@@ -9,7 +9,7 @@ Capsicum is a generic, ready-to-extend, responsive Django + Angular site based o
 - Editable public profiles
 - An asset pipeline via django-compressor
 
-Capsicum is not intended to be installed as a reusable Django app. Instead, start a new project with it,
+Tristano is not intended to be installed as a reusable Django app. Instead, start a new project with it,
 rename, remove the git history, add it to a new repo, and start tweaking.
 
 # Installing

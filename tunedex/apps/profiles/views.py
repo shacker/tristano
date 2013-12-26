@@ -1,5 +1,3 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -18,9 +16,9 @@ def profile_display(request, username=None):
     profile = get_object_or_404(Profile, user__username__iexact=username)
 
     return render(
-    	request,
-    	"profiles/display.html",
-    	locals()
+        request,
+        "profiles/display.html",
+        locals()
     )
 
 
