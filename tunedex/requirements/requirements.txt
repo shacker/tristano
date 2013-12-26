@@ -1,15 +1,14 @@
 # Versioned
 django<1.7
 django-allauth==0.15.0
+djangorestframework<2.4
+django_compressor<1.4
+django-markdown-deux<1.1
 
 # Unversioned
 django-extensions
 Pillow
 south
-django-markdown-deux
-django_compressor
-djangorestframework
-
 
 # For django admin-docs
 docutils

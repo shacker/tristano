@@ -23,14 +23,14 @@ router.register(r'books', BookViewSet)
 
 urlpatterns = patterns('',
 
+	# Admin
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 
-    # django-allauth
+    # django-allauth -- registration, login, passwords
     (r'^accounts/', include('allauth.urls')),
 
-    # User pages
-    # url(r'^p/edit/?$', profile_edit, name='profile_edit'),
+    # Profiles
     url(r'^p/edit/?$', ProfileUpdateView.as_view(),  name='profile_update'),
     url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_detail'),
 
@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
+    # Home
     url(r'^$', 'main.views.home', name='home'),
 
 )
