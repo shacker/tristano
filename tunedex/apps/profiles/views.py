@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.utils.html import strip_tags
 from django.contrib.auth.models import User
-from django.views.generic import DetailView
+from django.http import HttpResponseRedirect
+from django.views.generic import DetailView, UpdateView
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
@@ -11,42 +12,31 @@ from profiles.forms import ProfileForm
 
 class ProfileDetailView(DetailView):
 
-    # No need to specify context_object_name = 'profile' for template - it's implied
-
     def get_object(self):
         user = get_object_or_404(User, username=self.kwargs['username'])
         return user.profile
 
 
-def profile_edit(request):
-    """
-    User edits own profile
-    """
+class ProfileUpdateView(UpdateView):
 
-    try:
-        profile = Profile.objects.get(user__username__iexact=request.user.username)
-        form = ProfileForm(instance=profile)
-    except:
-        return redirect('account_login')
+    model = Profile
+    form_class = ProfileForm
 
-    if request.method == 'POST':
-        form = ProfileForm(instance=profile, data=request.POST)
+    def get_object(self):
+        return self.request.user.profile
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, instance=self.get_object())
+
         if form.is_valid():
-
-            # Strip out all HTML; we allow markdown only
-            uprofile = form.save(commit=False)
-            uprofile.bio = strip_tags(form.cleaned_data['bio'])
-            uprofile.influences = strip_tags(form.cleaned_data['influences'])
-            uprofile.save()
+            instance = form.save(commit=False)
+            instance.bio = strip_tags(form.cleaned_data['bio'])
+            instance.influences = strip_tags(form.cleaned_data['influences'])
+            instance.save()
 
             messages.add_message (request, messages.SUCCESS, 'Profile saved!')
-            url = reverse('profile_display', kwargs={'username': request.user.username})
+            url = reverse('profile_detail', kwargs={'username': request.user.username})
             return HttpResponseRedirect(url)
-    else:
-        form = ProfileForm(instance=profile)
-
-    return render(
-        request,
-        "profiles/edit.html",
-        locals()
-    )
+        else:
+            # No required fields here...
+            pass

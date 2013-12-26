@@ -6,8 +6,9 @@ Tristano is a generic, ready-to-extend, responsive Django + Angular site based o
 - AngularJS
 - Django REST Framework (API generation)
 - Django-AllAuth (for social network logins)
-- Editable public profiles
+- Editable public profiles (via Markdown)
 - An asset pipeline via django-compressor
+
 
 Tristano is not intended to be installed as a reusable Django app. Instead, start a new project with it,
 rename, remove the git history, add it to a new repo, and start tweaking.

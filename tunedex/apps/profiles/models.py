@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 class Profile(models.Model):
@@ -55,6 +56,8 @@ class Profile(models.Model):
 
         return display_string
 
+    def get_absolute_url(self):
+        return reverse('profile_update')
 
     def __unicode__(self):
 

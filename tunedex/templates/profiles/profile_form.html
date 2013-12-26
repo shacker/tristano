@@ -11,7 +11,7 @@
 
 			<p><strong>Formatting:</strong> HTML/Javascript will be removed. Please feel free to format your text with <a href="http://blog.lib.umn.edu/crosb002/leadership/Markdown_Cheat_Sheet.pdf" target="_blank">markdown</a>.</p>
 
-			<form action="{% url 'profile_edit' %}" method="post">
+			<form action="{% url 'profile_update' %}" method="post">
 			{% csrf_token %}
 
 			<label>{{form.bio.label}}</label>

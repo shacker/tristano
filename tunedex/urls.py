@@ -1,7 +1,6 @@
 from django.conf.urls import patterns, include, url
 from rest_framework import viewsets, routers
-# from profiles.views import profile_display, profile_edit
-from profiles.views import ProfileDetailView
+from profiles.views import ProfileDetailView, ProfileUpdateView
 from django.contrib.auth.models import User
 from sampledata.models import Book
 
@@ -24,9 +23,7 @@ router.register(r'books', BookViewSet)
 
 urlpatterns = patterns('',
 
-    # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     (r'^admin/', include(admin.site.urls)),
 
     # django-allauth
@@ -34,7 +31,8 @@ urlpatterns = patterns('',
 
     # User pages
     # url(r'^p/edit/?$', profile_edit, name='profile_edit'),
-    url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_display'),
+    url(r'^p/edit/?$', ProfileUpdateView.as_view(),  name='profile_update'),
+    url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_detail'),
 
     # API
     url(r'^api/', include(router.urls)),
