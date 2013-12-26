@@ -2,24 +2,20 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.utils.html import strip_tags
-
+from django.contrib.auth.models import User
+from django.views.generic import DetailView
 
 from profiles.models import Profile
 from profiles.forms import ProfileForm
 
 
-def profile_display(request, username=None):
-    """
-    A user's profile display
-    """
+class ProfileDetailView(DetailView):
 
-    profile = get_object_or_404(Profile, user__username__iexact=username)
+    # No need to specify context_object_name = 'profile' for template - it's implied
 
-    return render(
-        request,
-        "profiles/display.html",
-        locals()
-    )
+    def get_object(self):
+        user = get_object_or_404(User, username=self.kwargs['username'])
+        return user.profile
 
 
 def profile_edit(request):

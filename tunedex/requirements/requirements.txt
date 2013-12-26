@@ -9,3 +9,8 @@ south
 django-markdown-deux
 django_compressor
 djangorestframework
+
+
+# For django admin-docs
+docutils
+pygments

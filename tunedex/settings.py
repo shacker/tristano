@@ -156,6 +156,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.admindocs',
 
     # 3rd party apps
     'django_extensions',
