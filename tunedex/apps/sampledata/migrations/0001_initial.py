@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table(u'sampledata_book', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('title', self.gf('django.db.models.fields.CharField')(default='Unknown Title', max_length=100)),
-            ('author', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
+            ('author', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('year', self.gf('django.db.models.fields.SmallIntegerField')(default=1900, max_length=4)),
             ('isbn', self.gf('django.db.models.fields.CharField')(max_length=13)),
             ('summary', self.gf('django.db.models.fields.TextField')(blank=True)),
@@ -64,7 +64,7 @@ class Migration(SchemaMigration):
         },
         u'sampledata.book': {
             'Meta': {'object_name': 'Book'},
-            'author': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'}),
+            'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'isbn': ('django.db.models.fields.CharField', [], {'max_length': '13'}),
             'summary': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
