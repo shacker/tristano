@@ -3,8 +3,8 @@ from rest_framework import viewsets, routers
 from profiles.views import ProfileDetailView, ProfileUpdateView
 from django.contrib.auth.models import User
 from sampledata.models import Book
+from sampledata.views import BookViewSet
 
-# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
@@ -12,8 +12,7 @@ admin.autodiscover()
 class UserViewSet(viewsets.ModelViewSet):
     model = User
 
-class BookViewSet(viewsets.ModelViewSet):
-    model = Book
+
 
 # Routers determine the URL conf for the API
 router = routers.DefaultRouter()
@@ -36,7 +35,7 @@ urlpatterns = patterns('',
 
     # API
     url(r'^api/', include(router.urls)),
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # Home
     url(r'^$', 'main.views.home', name='home'),

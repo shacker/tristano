@@ -1,11 +1,11 @@
 {
   "name": "tunedex",
   "version": "1.0",
-  "homepage": "https://tunedex.net",
+  "homepage": "http://birdhouse.org/blog",
   "authors": [
     "Scot Hacker <shacker@birdhouse.org>"
   ],
-  "description": "JS and CSS assets for tunedex.net",
+  "description": "JS and CSS assets for Tristano Django",
   "license": "Private",
   "private": true,
   "ignore": [
