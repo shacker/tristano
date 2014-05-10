@@ -17,9 +17,3 @@ class Book(models.Model):
 
     def __unicode__(self):
         return self.title
-
-    def save(self, *args, **kwargs):
-        """
-        Any special kung-fu to be performed whenever Books are saved
-        """
-        pass

@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    snippets = serializers.HyperlinkedRelatedField(view_name='snippet-detail', many=True)
+    snippets = serializers.HyperlinkedRelatedField(
+        view_name='snippet-detail', many=True
+        )
 
     class Meta:
         model = User
         fields = ('url', 'username', 'email')
-
 
 
 class BookSerializer(serializers.HyperlinkedModelSerializer):
@@ -19,5 +20,3 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Book
         fields = ('url', 'title', 'author', 'year', 'isbn', 'summary')
-
-
