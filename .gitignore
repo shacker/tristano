@@ -1,6 +1,8 @@
 # Mine
 *.sass-cache
 local_settings.py
+tunedex.sublime-project
+tunedex.sublime-workspace
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -46,4 +48,5 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
 
