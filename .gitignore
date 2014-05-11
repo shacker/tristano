@@ -2,8 +2,8 @@
 *.sass-cache
 CACHE
 local_settings.py
-tunedex.sublime-project
-tunedex.sublime-workspace
+project.sublime-project
+project.sublime-workspace
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

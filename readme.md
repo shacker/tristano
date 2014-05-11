@@ -36,6 +36,8 @@ pwd [copy path to clipboard]
 add2virtualenv [paste]
 ```
 
+Rename the `project` directory to match the name of your current project and fix references to it in settings.
+
 Via `/admin`, add a Site record for localhost. Add at least one social network via Social Apps, attached to Site ID 2, referenced in `local_settings` (tweak as needed)
 
 
