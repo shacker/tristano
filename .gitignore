@@ -1,5 +1,6 @@
 # Mine
 *.sass-cache
+CACHE
 local_settings.py
 tunedex.sublime-project
 tunedex.sublime-workspace
