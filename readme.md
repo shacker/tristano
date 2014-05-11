@@ -44,7 +44,9 @@ Compass compiles our custom scss from `static/styles/sass` to `static/styles/css
 Thus, generated `styles/css/app.css` includes all of foundations plus our overrides.
 
 To compile, use:
-`compass compile --sass-dir tunedex/static/styles/sass --css-dir tunedex/static/styles/css`
+`cd tristano; compass compile`
+
+Compass will use the input and output settings listed in `config.rb`.
 
 Or, take advantage of the included config.rb by opening a 2nd terminal and running (from the main directory):
 `compass watch`

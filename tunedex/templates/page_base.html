@@ -14,7 +14,7 @@
     {% endcompress %}
 
     {% compress js %}
-    <script src="{% static 'bower_components/foundation/js/vendor/custom.modernizr.js' %}"></script>
+    <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
     {% endcompress %}
 
     {% block extra_head %}{% endblock %}
@@ -57,7 +57,7 @@
     </div>
 
     {% compress js %}
-    <script src="{% static 'bower_components/foundation/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'bower_components/jquery/src/jquery.js' %}"></script>
     <script>
       $.getScript("{% static 'bower_components/foundation/js/foundation.js' %}", function(){
         $(document).foundation();
