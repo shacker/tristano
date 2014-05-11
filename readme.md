@@ -13,7 +13,7 @@ Tristano is a generic, ready-to-extend, responsive Django + Angular site based o
 Tristano is not intended to be installed as a reusable Django app. Instead, start a new project with it,
 rename, remove the git history, add it to a new repo, and start tweaking.
 
-postgres is assumed, but season to taste.
+postgres and a clean virtualenv are assumed, but season to taste.
 
 # Installing
 
@@ -26,6 +26,14 @@ bower install
 mv local_settings.sample.py local_settings.py and tweak as needed
 ./manage.py syncdb
 ./manage.py migrate
+```
+
+Because apps are kept in the `apps` directory rather than in the project root, you'll need to add its path to your virtualenv:
+
+```
+cd apps
+pwd [copy path to clipboard]
+add2virtualenv [paste]
 ```
 
 Via `/admin`, add a Site record for localhost. Add at least one social network via Social Apps, attached to Site ID 2, referenced in `local_settings` (tweak as needed)
