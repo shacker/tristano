@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db.models import signals
+
+from profiles.signals import create_profile
 
 
 class Profile(models.Model):
@@ -63,6 +66,11 @@ class Profile(models.Model):
 
         display_string = "{display} ({uname})".format(display=self.display_name(), uname=self.user.username)
         return display_string
+
+
+# When User instance is saved, trigger creation of corresponding profile.
+# This covers instances of Users created from CLI or /admin, not just all-auth
+signals.post_save.connect(create_profile, sender=User)
 
 
 # When account is created via social, fire django-allauth signal to populate Django User record.
