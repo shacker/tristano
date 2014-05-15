@@ -16,6 +16,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Override compressor settings
+COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = False
 
 
