@@ -1,17 +1,20 @@
 from django.conf.urls import patterns, include, url
-from rest_framework import viewsets, routers
-from profiles.views import ProfileDetailView, ProfileUpdateView
 from django.contrib.auth.models import User
-from sampledata.models import Book
-from sampledata.views import BookViewSet
-
 from django.contrib import admin
+
+from rest_framework import viewsets, routers
+
+from profiles.views import ProfileDetailView, ProfileUpdateView
+from sampledata.views import BooksListView
+from sampledata.views_api import BookViewSet
+from sampledata.models import Book
+
+
 admin.autodiscover()
 
 # ViewSets define the API view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     model = User
-
 
 
 # Routers determine the URL conf for the API
@@ -32,6 +35,9 @@ urlpatterns = patterns('',
     # Profiles
     url(r'^p/edit/?$', ProfileUpdateView.as_view(),  name='profile_update'),
     url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_detail'),
+
+    # My Books
+    url(r'^books/?$', BooksListView.as_view(),  name='books_list'),
 
     # API
     url(r'^api/', include(router.urls)),

@@ -14,8 +14,10 @@
     {% endcompress %}
 
     {% compress js %}
+        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
         <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-
+        <script src="{% static 'bower_components/angular/angular.js' %}"></script>
+        <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
         <script src="{% static 'js/angular/app.js' %}"></script>
         <script src="{% static 'js/angular/books/controllers.js' %}"></script>
     {% endcompress %}
@@ -23,7 +25,7 @@
     {% block extra_head %}{% endblock %}
   </head>
 
-  <body>
+  <body ng-app="Tristano">
 
     {% if messages %}
     <div class="row">
@@ -61,7 +63,6 @@
     </div>
 
     {% compress js %}
-    <script src="{% static 'bower_components/jquery/src/jquery.js' %}"></script>
     <script>
         $.getScript("{% static 'bower_components/foundation/js/foundation.js' %}", function(){
             $(document).foundation();
