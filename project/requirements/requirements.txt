@@ -9,7 +9,6 @@ django-markdown-deux<1.1
 # Unversioned
 django-extensions
 Pillow
-south
 psycopg2
 django_compressor
 

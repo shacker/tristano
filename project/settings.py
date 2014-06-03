@@ -164,7 +164,6 @@ INSTALLED_APPS = (
     'django_extensions',
     'markdown_deux',
     'compressor',
-    'south',
     'rest_framework',
 
     'allauth',
