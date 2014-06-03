@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from rest_framework import viewsets, routers
 
-from profiles.views import ProfileDetailView, ProfileUpdateView
+from profiles.views import ProfileDetailView, ProfileUpdateView, UserViewSet
 from sampledata.views import BooksListView
 from sampledata.views_api import BookViewSet
 from sampledata.models import Book
@@ -13,10 +13,6 @@ from sampledata.models import Book
 admin.autodiscover()
 
 # ViewSets define the API view behavior.
-class UserViewSet(viewsets.ModelViewSet):
-    model = User
-
-
 # Routers determine the URL conf for the API
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)

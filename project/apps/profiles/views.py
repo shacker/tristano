@@ -6,8 +6,25 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, UpdateView
 
+from rest_framework import viewsets
+
 from profiles.models import Profile
 from profiles.forms import ProfileForm
+from profiles.serializers import UserSerializer
+
+
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    This endpoint presents the users in the system.
+
+    The collection of book instances owned by a user are
+    serialized using a hyperlinked representation, via this connection.
+
+    n.b. This should prob. be in a separate `users` app but makes sense in profiles.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 
 
 class ProfileDetailView(DetailView):

@@ -6,7 +6,8 @@ from rest_framework.decorators import link
 from rest_framework.response import Response
 from sampledata.models import Book
 from sampledata.permissions import IsOwnerOrReadOnly
-from sampledata.serializers import BookSerializer, UserSerializer
+from sampledata.serializers import BookSerializer
+from profiles.serializers import UserSerializer
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -34,15 +35,3 @@ class BookViewSet(viewsets.ModelViewSet):
 
     def pre_save(self, obj):
         obj.owner = self.request.user
-
-
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    This endpoint presents the users in the system.
-
-    As you can see, the collection of book instances owned by a user are
-    serialized using a hyperlinked representation.
-    """
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
