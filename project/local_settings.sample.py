@@ -25,9 +25,6 @@ SOCIAL_AUTH_TWITTER_SECRET = 'bar'
 # GOOGLE_OAUTH2_CLIENT_ID      = ''
 # GOOGLE_OAUTH2_CLIENT_SECRET  = ''
 
-# localhost
-SITE_ID = 2
-
 # To test django-compressor's asset pipeline locally:
 # 1) `./manage.py collecstatic`
 # 2) Set both options below to True and run `./manage.py compress`:
