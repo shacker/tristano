@@ -18,13 +18,12 @@ postgres and a clean virtualenv are assumed, but season to taste.
 # Installing
 
 ```
+[create blank database `tristano` or other]
 pip install -r requirements.txt
 pip install psycopg2
 cd requirements
 bower install
-[create database `tristano` or other]
 mv local_settings.sample.py local_settings.py and tweak as needed
-./manage.py syncdb
 ./manage.py migrate
 ```
 
