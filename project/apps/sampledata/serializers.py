@@ -8,4 +8,4 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Book
-        fields = ('url', 'title', 'author', 'year', 'isbn', 'summary')
+        fields = ('id', 'url', 'title', 'author', 'year', 'isbn', 'summary')

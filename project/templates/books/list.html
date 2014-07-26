@@ -5,18 +5,17 @@
 {% block content %}
 	<h2>Books</h2>	
 	<div ng-controller="BooksCtrl">
-		
+
 		{% verbatim %}
 		<div ng-repeat="book in books">
 			<p>
-				{{book.title}} ({{book.year}})<br />
+				<a href="/book/{{book.id}}">{{book.title}}</a> ({{book.year}})<br />
 				{{book.summary}}<br />
 				{{book.isbn}}<br />
 				<a ng-href="{{book.author}}">Author URL</a>
 			</p>
-			
 		</div>
 		{% endverbatim %}
+
 	</div>
 {% endblock content %}
-
