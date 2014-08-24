@@ -1,5 +1,5 @@
 # Versioned
-git+git://github.com/django/django.git@1.7c1
+git+git://github.com/django/django.git@1.7c3
 django-allauth==0.15.0
 djangorestframework<2.4
 # Temporarily using manual install:

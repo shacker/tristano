@@ -21,12 +21,12 @@ MyApp.service('getBooks', function ($http) {
 
 MyApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/book/:bookId',
+        .when('/:bookId',
             {
                 templateUrl: 'book-detail.html',
                 controller: 'BooksCtrl'
             })
-        .when('/books/',
+        .when('/',
             {
                 templateUrl: 'books-list.html',
                 controller: 'BooksCtrl'

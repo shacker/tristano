@@ -5,7 +5,7 @@ from django.contrib import admin
 from rest_framework import viewsets, routers
 
 from profiles.views import ProfileDetailView, ProfileUpdateView, UserViewSet
-from sampledata.views import BooksListView
+from sampledata.views import BooksView
 from sampledata.views_api import BookViewSet
 from sampledata.models import Book
 
@@ -33,7 +33,8 @@ urlpatterns = patterns('',
     url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_detail'),
 
     # My Books
-    url(r'^books/?$', BooksListView.as_view(),  name='books_list'),
+    url(r'^books.*$', BooksView.as_view(),  name='books_list_detail_shared'),
+    # url(r'^books/(?P<book_id>\d+)/?$', BooksView.as_view(),  name='books_detail'),
 
     # API
     url(r'^api/', include(router.urls)),
