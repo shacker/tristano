@@ -45,6 +45,7 @@
               <a href="/">Home</a> |
               <a href="/api/books">API Data</a> |
               <a href="/books">Angular Data View</a> |
+              <a href="{% url 'books_list_static' %}">CBV generic list</a> |
       		  	{% if user.is_authenticated %}
           		  	<a href="{% url 'profile_detail' user %}">{{user.username}}</a> |
                     <a href="{% url 'profile_update' %}">Edit Profile</a> |
