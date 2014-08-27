@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.test import Client
 
 from sampledata.models import Book
 
@@ -35,8 +34,7 @@ class BookTest(TestCase):
         Generic CBV retrieval, named URL
         """
 
-        client = Client()
-        response = client.get(reverse('books_list_static'))
+        response = self.client.get(reverse('books_list_static'))
 
         self.assertEqual(response.status_code, 200)
 
@@ -47,10 +45,9 @@ class BookTest(TestCase):
         """
 
         books = Book.objects.all()
-        book_id = books[0].id
+        book_id = books[0].id  # Can't assume test book has ID 1, so get first book in db
 
-        client = Client()
         url = reverse('books_detail_static', kwargs={'pk': book_id})
-        response = client.get(url)
+        response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)

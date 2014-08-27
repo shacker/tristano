@@ -77,6 +77,14 @@ in `local_settings.py` and then viewing source.
 
 A simple books API (meant to be changed to whatever app/model you're building) is demonstrated via `django-rest-framework` with the `sampledata` app. Enter a few books, then access `/api/books` for the demo. Append `?format=json` to any REST URL for raw data.
 
+# Testing
+
+Basic unit tests are included for bundled sample apps. Since these live in the `apps` directory, you'll need to specify that dir in the test runner:
+
+```
+./manage.py test -v2 project/apps
+```
+
 # Versions
 
 v 1.0: Initial release

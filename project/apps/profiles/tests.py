@@ -17,14 +17,13 @@ class ProfileTest(TestCase):
         Ensures that newly created User objects always get matching Profile objects
         """
 
-        # A bit odd, but newuser object should be identical to user object belonging
-        # to the profile that belongs to newuser
-        self.assertEqual(self.newuser.profile.user, self.newuser)
+        # Verify that a related profile object now exists
+        self.assertTrue(self.newuser.profile)
 
 
     def test_display_name(self):
         """
-        display_name() method on Profile should assemble first and last names
+        display_name() method on Profile should assemble first and last names correctly.
         """
 
         profile = self.newuser.profile
