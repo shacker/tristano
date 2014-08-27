@@ -24,7 +24,7 @@ class ProfileTest(TestCase):
 
     def test_display_name(self):
         """
-        display_name method should assemble first and last names
+        display_name() method on Profile should assemble first and last names
         """
 
         profile = self.newuser.profile
