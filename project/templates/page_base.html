@@ -3,46 +3,44 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>{% block page_title %}Tristano - {% endblock page_title %}</title>
+        <title>{% block page_title %}Tristano - {% endblock page_title %}</title>
 
-    <!-- Bootstrap core CSS -->
-    {% compress css %}
-      <link href="{% static 'styles/css/app.css' %}" rel="stylesheet">
-      <link href="{% static 'styles/css/bootstrap_theme.css' %}" rel="stylesheet">
-    {% endcompress %}
-
-
-    {% compress js %}
-        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-        <script src="{% static 'bower_components/angular/angular.js' %}"></script>
-        <script src="{% static 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js' %}"></script>
-
-        <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
-        <script src="{% static 'js/angular/app.js' %}"></script>
-        <script src="{% static 'js/angular/books/controllers.js' %}"></script>
-    {% endcompress %}
-
-    {% block extra_head %}{% endblock %}
+        <!-- Bootstrap core CSS -->
+        {% compress css %}
+          <link href="{% static 'styles/css/app.css' %}" rel="stylesheet">
+          <link href="{% static 'styles/css/bootstrap_theme.css' %}" rel="stylesheet">
+        {% endcompress %}
 
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+        {% compress js %}
+            <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+            <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+            <script src="{% static 'bower_components/angular/angular.js' %}"></script>
+            <script src="{% static 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js' %}"></script>
 
-  <body role="document" ng-app="Tristano">
+            <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
+            <script src="{% static 'js/angular/app.js' %}"></script>
+            <script src="{% static 'js/angular/books/controllers.js' %}"></script>
+        {% endcompress %}
 
+        {% block extra_head %}{% endblock %}
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body role="document" ng-app="Tristano">
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -58,7 +56,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="/api/books">API Data</a></li>
             <li><a href="/books">Angular Data View</a></li>
             <li><a href="{% url 'books_list_static' %}">CBV generic list</a></li>
@@ -80,33 +78,31 @@
             </li>
           </ul>
         </div><!--/.nav-collapse -->
+
       </div>
     </div>
 
+        <div class="container theme-showcase" role="main">
 
-    {% if messages %}
-    <div class="row">
-      <div class="col-xs-12">
-        <ul class="messages">
-          {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-    {% endif %}
+            {% if messages %}
+                <div class="row">
+                  <div class="col-xs-12">
+                      {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                            <strong>{{ message }}</strong>
+                        </div>
+                      {% endfor %}
+                  </div>
+                </div>
+            {% endif %}
 
-    <div class="container theme-showcase" role="main">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                {% block content %}
+                {% endblock content %}
+            </div>
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        {% block content %}
-        {% endblock content %}
-      </div>
+        </div> <!-- /container -->
 
-
-    </div> <!-- /container -->
-
-
-      </body>
+    </body>
 </html>
