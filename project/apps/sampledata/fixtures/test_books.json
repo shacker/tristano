@@ -1,0 +1,54 @@
+[
+{
+  "fields": {
+    "isbn": "1923389845398",
+    "title": "Moby Dick",
+    "author": 5,
+    "created": "2014-06-03T16:22:58.183Z",
+    "year": 1971,
+    "owner": 3,
+    "summary": "Something amazing written here."
+  },
+  "model": "sampledata.book",
+  "pk": 1
+},
+{
+  "fields": {
+    "isbn": "98345834834",
+    "title": "A Midsummer Night's Dream",
+    "author": 3,
+    "created": "2014-06-03T16:23:31.520Z",
+    "year": 1964,
+    "owner": 5,
+    "summary": "One of humankind's greatest plays."
+  },
+  "model": "sampledata.book",
+  "pk": 2
+},
+{
+  "fields": {
+    "isbn": "9893749738423",
+    "title": "Doctor Zhivago",
+    "author": 3,
+    "created": "2014-08-27T23:38:57.028Z",
+    "year": 1945,
+    "owner": 6,
+    "summary": "Russian spies, shoe phones, what else do you need?"
+  },
+  "model": "sampledata.book",
+  "pk": 4
+},
+{
+  "fields": {
+    "isbn": "98374593845",
+    "title": "Love in the Time of Cholera",
+    "author": 6,
+    "created": "2014-08-27T23:39:43.550Z",
+    "year": 2002,
+    "owner": 5,
+    "summary": ""
+  },
+  "model": "sampledata.book",
+  "pk": 5
+}
+]

@@ -6,10 +6,13 @@ from sampledata.models import Book
 
 class BookTest(TestCase):
 
+    fixtures = ['test_users.json', 'test_books.json']
+
+
     def setUp(self):
         # Create an owner and an author to test Book record creation
         self.owner = User.objects.create_user('bob', 'bob@example.com', 'somepass')
-        self.author = User.objects.create_user('mary', 'mary@example.com', 'somepass')
+        self.author = User.objects.create_user('maryjane', 'maryjane@example.com', 'somepass')
 
         self.book1 = Book.objects.create(
             owner = self.owner,
@@ -17,6 +20,11 @@ class BookTest(TestCase):
             title = "This is a test title",
             year = 1975
         )
+
+
+    def test_fixture_loaded(self):
+        # Make sure we can retrieve a known test book from the fixture data
+        self.assertTrue(Book.objects.get(isbn='1923389845398'))
 
 
     def test_book1_saved(self):
