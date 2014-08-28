@@ -12,16 +12,12 @@
 
 	{% if socialaccount.providers  %}
 		<p>
-			{% blocktrans with site.name as site_name %}Please sign in with one of your social accounts. If you don't already have a {{site_name}} account, one will be created for you.
+			{% blocktrans with site.name as site_name %}Please sign in with one of your social accounts.
 			{% endblocktrans %}
 		</p>
 
 		<div class="socialaccount_ballot">
-
-		  <ul class="socialaccount_providers">
 		    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-		  </ul>
-
 		</div>
 
 		{% include "socialaccount/snippets/login_extra.html" %}

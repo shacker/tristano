@@ -1,0 +1,41 @@
+{% extends "socialaccount/base.html" %}
+{% load url from future %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
+{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
+
+
+<form role="form" class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+  {% csrf_token %}
+
+	<div class="form-group">
+		<label>Username</label>
+		<input autofocus="autofocus" class="form-control" id="id_username" maxlength="30" name="username"  type="text" value="{{form.username.value}}">
+	</div>
+
+	<div class="form-group {% if form.email.errors %}has-warning{% endif %}">
+		<label>Email</label>
+		<input id="id_email" class="form-control" name="email" placeholder="E-mail address required" type="text">
+	</div>
+
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="btn btn-primary">Sign up &raquo;</button>
+
+</form>
+
+
+{% endblock %}
+
+                <div class="form-group">
+                    <label>{{form.bio.label}}</label>
+                    <textarea id="id_bio" name="bio" class="form-control" rows="4" placeholder="{{form.bio.help_text}}">{{form.bio.value}}</textarea>
+                </div>
