@@ -1,0 +1,11 @@
+{% extends "page_base.html" %}
+
+{% block page_title %}{{ block.super }}Books Static Detail View{% endblock page_title %}
+
+{% block content %}
+
+	<h3>Example of Django generic DetailView</h3>
+
+	<p>{{object.title}}</p>
+
+{% endblock content %}

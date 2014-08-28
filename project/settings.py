@@ -222,6 +222,10 @@ REST_FRAMEWORK = {
     'PAGINATE_BY': 10
 }
 
+# Override CSS class for the ERROR tag level to match Bootstrap class name
+from django.contrib.messages import constants as message_constants
+MESSAGE_TAGS = {message_constants.ERROR: 'danger'}
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

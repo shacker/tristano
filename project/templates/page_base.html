@@ -1,75 +1,108 @@
 {% load static from staticfiles %}
 {% load compress %}
 
-<!doctype html>
-<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
-<html class="no-js" lang="en" >
-  <head>
-    <meta name="viewport" content="initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-    <title>{% block page_title %}Tristano - {% endblock page_title %}</title>
+        <title>{% block page_title %}Tristano - {% endblock page_title %}</title>
 
-    {% compress css %}
-        <link href="{% static 'styles/css/app.css' %}" rel='stylesheet' />
-    {% endcompress %}
+        <!-- Bootstrap core CSS -->
+        {% compress css %}
+          <link href="{% static 'styles/css/app.css' %}" rel="stylesheet">
+          <link href="{% static 'styles/css/bootstrap_theme.css' %}" rel="stylesheet">
+        {% endcompress %}
 
-    {% compress js %}
-        <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
-        <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
-        <script src="{% static 'bower_components/angular/angular.js' %}"></script>
-        <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
-        <script src="{% static 'js/angular/app.js' %}"></script>
-        <script src="{% static 'js/angular/books/controllers.js' %}"></script>
-    {% endcompress %}
 
-    {% block extra_head %}{% endblock %}
-  </head>
+        {% compress js %}
+            <script src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
+            <script src="{% static 'bower_components/modernizr/modernizr.js' %}"></script>
+            <script src="{% static 'bower_components/angular/angular.js' %}"></script>
+            <script src="{% static 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js' %}"></script>
 
-  <body ng-app="Tristano">
+            <script src="{% static 'bower_components/angular-route/angular-route.js' %}"></script>
+            <script src="{% static 'js/angular/app.js' %}"></script>
+            <script src="{% static 'js/angular/books/controllers.js' %}"></script>
+        {% endcompress %}
 
-    {% if messages %}
-    <div class="row">
-      <div class="large-12 columns">
-        <ul class="messages">
-          {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-          {% endfor %}
-        </ul>
+        {% block extra_head %}{% endblock %}
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body role="document" ng-app="Tristano">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Tristano</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/api/books">API Data</a></li>
+            <li><a href="/books">Angular Data View</a></li>
+            <li><a href="{% url 'books_list_static' %}">CBV generic list</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile_detail' user %}">{{user.username}}</a></li`>
+                    <li><a href="{% url 'profile_update' %}">Edit Profile</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="{% url 'account_logout' %}">Log out</a></li>
+                {% else %}
+                    <li><a href="{% url 'account_login' %}">Log In</a></li>
+                {% endif %}
+
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+
       </div>
     </div>
-    {% endif %}
 
-  	<div class="row">
-  		<div class="large-12 columns">
-            <p>
-              <a href="/">Home</a> |
-              <a href="/api/books">API Data</a> |
-              <a href="/books">Angular Data View</a> |
-      		  	{% if user.is_authenticated %}
-          		  	<a href="{% url 'profile_detail' user %}">{{user.username}}</a> |
-                    <a href="{% url 'profile_update' %}">Edit Profile</a> |
-                    <a href="{% url 'account_logout' %}">Log out</a>
-      		  	{% else %}
-                    <a href="{% url 'account_login' %}">Log In</a>
-      		  	{% endif %}
-            </p>
-  		</div>
-    </div>
+        <div class="container theme-showcase" role="main">
 
-    <div class="row">
-        <div class="large-12 columns">
-            {% block content %}
-            {% endblock content %}
-        </div>
-    </div>
+            {% if messages %}
+                <div class="row">
+                  <div class="col-xs-12">
+                      {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                            <strong>{{ message }}</strong>
+                        </div>
+                      {% endfor %}
+                  </div>
+                </div>
+            {% endif %}
 
-    {% compress js %}
-    <script>
-        $.getScript("{% static 'bower_components/foundation/js/foundation.js' %}", function(){
-            $(document).foundation();
-        });
-    </script>
-    {% endcompress %}
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            <div class="jumbotron">
+                {% block content %}
+                {% endblock content %}
+            </div>
 
-  </body>
+        </div> <!-- /container -->
+
+    </body>
 </html>

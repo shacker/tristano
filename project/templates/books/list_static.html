@@ -1,0 +1,14 @@
+{% extends "page_base.html" %}
+
+{% block page_title %}{{ block.super }}Books Static View{% endblock page_title %}
+
+{% block content %}
+
+	<h3>Example of Django generic ListView</h3>
+
+	<ul>
+	{% for b in object_list  %}
+		<li><a href="{% url 'books_detail_static' b.id %}">{{b.title}}</a></li>
+	{% endfor %}
+	</ul>
+{% endblock content %}

@@ -2,7 +2,7 @@
 
 Tristano is a generic, ready-to-extend, responsive Django + Angular site based on:
 
-- Zurb Foundation (CSS grid and UI widgets)
+- Twitter Bootstrap (CSS grid and UI widgets)
 - AngularJS
 - Django REST Framework (API generation)
 - Django-AllAuth (for social network logins)
@@ -45,15 +45,15 @@ Add at least one social network via Social Apps.
 
 # Static File Management
 
-`bower install` installs apps to `static/bower_components`, including foundation and angular
+`bower install` installs apps to `static/bower_components`, including bootstrap and angular
 
 Our own scss and js lives in `static`
 
-In `static/styles/sass/app.scss` we import selective bower-installed foundation components, then override with our own styles and settings, which live in the same dir.
+In `static/styles/sass/app.scss` we import selective bower-installed bootstrap components, then override with our own styles and settings, which live in the same dir.
 
 Compass compiles our custom scss from `static/styles/sass` to `static/styles/css`
 
-Thus, generated `styles/css/app.css` includes all of foundations plus our overrides.
+Thus, generated `styles/css/app.css` includes all of bootstrap plus our overrides.
 
 To compile, use:
 `cd tristano; compass compile`
@@ -76,6 +76,14 @@ in `local_settings.py` and then viewing source.
 # API
 
 A simple books API (meant to be changed to whatever app/model you're building) is demonstrated via `django-rest-framework` with the `sampledata` app. Enter a few books, then access `/api/books` for the demo. Append `?format=json` to any REST URL for raw data.
+
+# Testing
+
+Basic unit tests are included for bundled sample apps. Since these live in the `apps` directory, you'll need to specify that dir in the test runner:
+
+```
+./manage.py test -v2 project/apps
+```
 
 # Versions
 

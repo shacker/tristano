@@ -5,28 +5,30 @@
 <div class="row">
 {% block content %}
 
-	<div class="row">
-		<div class="large-12 columns">
-			<h2 class="subheader">Editing {{profile.display_name}}'s Profile</h2>
+    <div class="row">
+        <div class="cols-xs-12">
+            <h2>Editing {{profile.display_name}}'s Profile</h2>
 
-			<p><strong>Formatting:</strong> HTML/Javascript will be removed. You can format your text with <a href="http://blog.lib.umn.edu/crosb002/leadership/Markdown_Cheat_Sheet.pdf" target="_blank">markdown</a>.</p>
+            <p><small><strong>Formatting:</strong> HTML/Javascript will be removed. You can format your text with <a href="http://blog.lib.umn.edu/crosb002/leadership/Markdown_Cheat_Sheet.pdf" target="_blank">markdown</a>.</small></p>
 
-			<form action="{% url 'profile_update' %}" method="post">
-			{% csrf_token %}
+            <form role="form" action="{% url 'profile_update' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>{{form.bio.label}}</label>
+                    <textarea id="id_bio" name="bio" class="form-control" rows="4" placeholder="{{form.bio.help_text}}">{{form.bio.value}}</textarea>
+                </div>
 
-			<label>{{form.bio.label}}</label>
-			{{form.bio}}
-			<p class="helptext">{{form.bio.help_text}}</p>
+                <div class="form-group">
+                    <label>{{form.influences.label}}</label>
+                    <textarea id="id_influences" name="influences" class="form-control" rows="4" placeholder="{{form.influences.help_text}}">{{form.influences.value}}</textarea>
+                </div>
 
-			<label>{{form.influences.label}}</label>
-			{{form.influences}}
-			<p class="helptext">{{form.influences.help_text}}</p>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
 
-			<input type="submit" value="Submit">
-			</form>
-
-		</div>
-	</div>
+        </div>
+    </div>
 
 {% endblock content %}
 </div>
+
