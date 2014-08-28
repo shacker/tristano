@@ -34,3 +34,16 @@ class ProfileTest(TestCase):
 
         profile = self.newuser.profile
         self.assertEqual(profile.display_name(), "ZJ Smith")
+
+
+    def test_can_save_profile_absent_influences_bio(self):
+        '''
+        Make sure we can save a profile with missing bio and influences
+        '''
+        profile = self.newuser.profile
+        profile.influences=""
+        profile.bio=""
+        profile.save()
+        self.assertEqual(profile, self.newuser.profile)
+
+

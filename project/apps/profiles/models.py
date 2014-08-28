@@ -8,9 +8,10 @@ from profiles.signals import create_profile
 
 class Profile(models.Model):
     user = models.OneToOneField(User, unique=True)
-    bio = models.TextField(help_text='A bit about yourself')
-    influences = models.TextField(help_text='Musicians/artists who inspire you')
-    social_avatar_url = models.URLField(default='/static/img/default-user-image.png')
+    bio = models.TextField(help_text='A bit about yourself', blank=True)
+    influences = models.TextField(help_text='Musicians/artists who inspire you', blank=True, null=True)
+    # Using CharField not URLField to handle relative URLs https://code.djangoproject.com/ticket/10896
+    social_avatar_url = models.CharField(default='/static/img/default-user-image.png', max_length=255, blank=True, null=True)
 
     def set_social_avatar_url(self, request):
         '''
