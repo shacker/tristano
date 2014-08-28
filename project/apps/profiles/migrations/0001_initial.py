@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('contenttypes', '__first__'), # Added this line per https://code.djangoproject.com/ticket/22518
     ]
 
     operations = [
