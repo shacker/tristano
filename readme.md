@@ -89,4 +89,5 @@ Basic unit tests are included for bundled sample apps. Since these live in the `
 # Versions
 
 v1.1: Demonstrates list and detail views both via CBV (Django) and Angular
+
 v1.0: Initial release
