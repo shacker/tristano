@@ -38,6 +38,8 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+      <base href="/" />
     </head>
 
     <body role="document" ng-app="Tristano">
@@ -56,22 +58,22 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/api/books">API Data</a></li>
+            <li class="active"><a href="/" target="_self">Home</a></li>
+            <li><a href="/api/books" target="_self">API Data</a></li>
             <li><a href="/books">Angular Data View</a></li>
-            <li><a href="{% url 'books_list_static' %}">CBV generic list</a></li>
+            <li><a href="{% url 'books_list_static' %}" target="_self">CBV generic list</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
               <ul class="dropdown-menu">
 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile_detail' user %}">{{user.username}}</a></li`>
-                    <li><a href="{% url 'profile_update' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'profile_detail' user %}" target="_self">{{user.username}}</a></li`>
+                    <li><a href="{% url 'profile_update' %}" target="_self">Edit Profile</a></li>
                     <li class="divider"></li>
                     <li class="dropdown-header">Nav header</li>
-                    <li><a href="{% url 'account_logout' %}">Log out</a></li>
+                    <li><a href="{% url 'account_logout' %}" target="_self">Log out</a></li>
                 {% else %}
-                    <li><a href="{% url 'account_login' %}">Log In</a></li>
+                    <li><a href="{% url 'account_login' %}" target="_self">Log In</a></li>
                 {% endif %}
 
               </ul>

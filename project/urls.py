@@ -33,8 +33,8 @@ urlpatterns = patterns('',
     url(r'^p/(?P<username>\w+)/$', ProfileDetailView.as_view(),  name='profile_detail'),
 
     # Books static views
-    url(r'^books/staticlist/?$', BooksStaticListView.as_view(),  name='books_list_static'),  # Static list view
-    url(r'^books/staticdetail/(?P<pk>[\d]+)?$', BooksStaticDetailView.as_view(),  name='books_detail_static'),  # Static detail view
+    url(r'^books_static/list/?$', BooksStaticListView.as_view(),  name='books_list_static'),  # Static list view
+    url(r'^books_static/detail/(?P<pk>[\d]+)?$', BooksStaticDetailView.as_view(),  name='books_detail_static'),  # Static detail view
 
     # Books Angular list/detail views both handled by a single/simple Django page
     url(r'^books/', BooksAngularView.as_view(),  name='books_list'),

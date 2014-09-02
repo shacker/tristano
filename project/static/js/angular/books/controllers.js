@@ -6,7 +6,7 @@
 // Get list of books from API
 MyApp.service('getBooks', function ($http) {
     this.getData = function () {
-        var promise = $http({method:'GET', url:'/api/books/'})
+        var promise = $http({method:'GET', url:'/api/books'})
             .success(function (data, status, headers, config) {
                 return data;
             })
@@ -38,21 +38,24 @@ MyApp.service('getBook', function ($http) {
 
 MyApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
-        .when('/:bookId',
+        .when('/books/:bookId',
             {
                 templateUrl: '/static/js/angular/books/partials/books-detail.html',
                 controller: 'BooksDetailCtrl'
             })
-        .when('/',
+        .when('/books',
             {
                 templateUrl: '/static/js/angular/books/partials/books-list.html',
                 controller: 'BooksListCtrl'
             })
         .otherwise(
             {
-                redirectTo: '/'
+                redirectTo: '/books'
             }
       );
+
+    // enable html5Mode for pushstate ('#'-less URLs)
+    $locationProvider.html5Mode(true);
 }]);
 
 

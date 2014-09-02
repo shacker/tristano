@@ -1,6 +1,6 @@
 <div ng-repeat="book in books">
 	<p>
-		<a href="/books/#{{ book.id }}">{{ book.title }}</a> ({{ book.year }})<br />
+		<a href="/books/{{ book.id }}">{{ book.title }}</a> ({{ book.year }})<br />
 		{{ book.summary }}<br />
 		{{ book.isbn }}<br />
 		<a ng-href="{{ book.author }}">Author URL</a>
