@@ -5,12 +5,12 @@ from sampledata.models import Book
 
 
 
-class BooksListView(TemplateView):
+class BooksAngularView(TemplateView):
     """
     Stub list view for user's books; hand off to Angular for data display.
     """
 
-    template_name = "books/list.html"
+    template_name = "books/books-angular.html"
 
 
 class BooksStaticListView(ListView):

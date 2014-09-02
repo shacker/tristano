@@ -1,0 +1,12 @@
+{% extends "page_base.html" %}
+{# Shared parent view for books listing and details #}
+
+{% block page_title %}{{ block.super }}Books{% endblock page_title %}
+
+{% block content %}
+	<h2>Books</h2>
+
+	{# Output from controllers named in the Angular router inserted here #}
+	<div ng-view></div>
+
+{% endblock content %}
