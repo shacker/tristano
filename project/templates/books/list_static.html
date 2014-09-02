@@ -6,9 +6,9 @@
 
 	<h3>Example of Django generic ListView</h3>
 
-	<ul>
+	<ul class="list-group">
 	{% for b in object_list  %}
-		<li><a href="{% url 'books_detail_static' b.id %}">{{b.title}}</a></li>
+		<li class="list-group-item"><a href="{% url 'books_detail_static' b.id %}">{{b.title}}</a></li>
 	{% endfor %}
 	</ul>
 {% endblock content %}
