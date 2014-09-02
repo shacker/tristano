@@ -9,7 +9,8 @@ Tristano is a generic, ready-to-extend, responsive Django + Angular site based o
 - Django Extensions
 - Editable public profiles (via Markdown)
 - Asset pipeline (compression and minification) via django-compressor
-- Class-based generic views
+- Samples of list and detail views via both Django CBVs and Angular
+- Sample API representations
 
 Tristano is not intended to be installed as a reusable Django app. Instead, start a new project with it,
 rename, remove the git history, add it to a new repo, and start tweaking.
@@ -87,4 +88,5 @@ Basic unit tests are included for bundled sample apps. Since these live in the `
 
 # Versions
 
+v 1.1: Demonstrates list and detail views both via CBV (Django) and Angular
 v 1.0: Initial release
