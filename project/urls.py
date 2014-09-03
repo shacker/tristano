@@ -10,8 +10,6 @@ from sampledata.views_api import BookViewSet
 from sampledata.models import Book
 
 
-admin.autodiscover()
-
 # ViewSets define the API view behavior.
 # Routers determine the URL conf for the API
 router = routers.DefaultRouter()
