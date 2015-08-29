@@ -1,7 +1,7 @@
 # Versioned
 git+git://github.com/django/django.git@1.7
 django-allauth==0.15.0
-djangorestframework<2.4
+djangorestframework
 # Temporarily using manual install:
 # pip install http://github.com/django-compressor/django-compressor/tarball/develop
 django-markdown-deux<1.1

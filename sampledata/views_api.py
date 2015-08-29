@@ -1,13 +1,11 @@
-from django.contrib.auth.models import User
 from rest_framework import permissions
 from rest_framework import renderers
 from rest_framework import viewsets
-from rest_framework.decorators import link
+# from rest_framework.decorators import link
 from rest_framework.response import Response
 from sampledata.models import Book
 from sampledata.permissions import IsOwnerOrReadOnly
 from sampledata.serializers import BookSerializer
-from profiles.serializers import UserSerializer
 
 
 class BookViewSet(viewsets.ModelViewSet):
@@ -28,7 +26,7 @@ class BookViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly,)
 
-    @link(renderer_classes=(renderers.StaticHTMLRenderer,))
+    # @link(renderer_classes=(renderers.StaticHTMLRenderer,))
     def highlight(self, request, *args, **kwargs):
         snippet = self.get_object()
         return Response(snippet.highlighted)
